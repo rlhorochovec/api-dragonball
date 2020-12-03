@@ -28,7 +28,7 @@ public class GuerreiroController {
 	GuerreiroRepository guerreiroRepository;
 
 	@PostMapping("/guerreiros")
-	public ResponseEntity<Guerreiro> criarGuerreiro(@RequestBody Guerreiro guerreiro) {
+	public ResponseEntity<Guerreiro> createrGuerreiro(@RequestBody Guerreiro guerreiro) {
 		try {
 			Guerreiro _guerreiro = guerreiroRepository
 					.save(new Guerreiro(guerreiro.getNome(), guerreiro.getRaca(), guerreiro.getPlaneta()));
@@ -39,7 +39,7 @@ public class GuerreiroController {
 	}
 
 	@GetMapping("/guerreiros")
-	public ResponseEntity<List<Guerreiro>> listarGuerreiros(@RequestParam(required = false) String nome) {
+	public ResponseEntity<List<Guerreiro>> getGuerreiros(@RequestParam(required = false) String nome) {
 		try {
 			List<Guerreiro> guerreiros = new ArrayList<Guerreiro>();
 			if (nome == null) {
@@ -58,7 +58,7 @@ public class GuerreiroController {
 	}
 
 	@GetMapping("/guerreiros/{id}")
-	public ResponseEntity<Guerreiro> selecionarGuerreiro(@PathVariable("id") long id) {
+	public ResponseEntity<Guerreiro> getGuerreiroById(@PathVariable("id") long id) {
 		Optional<Guerreiro> guerreiro = guerreiroRepository.findById(id);
 		if (guerreiro.isPresent()) {
 			return new ResponseEntity<>(guerreiro.get(), HttpStatus.OK);
@@ -68,7 +68,7 @@ public class GuerreiroController {
 	}
 
 	@PutMapping("/guerreiros/{id}")
-	public ResponseEntity<Guerreiro> editarGuerreiro(@PathVariable("id") long id, @RequestBody Guerreiro guerreiro) {
+	public ResponseEntity<Guerreiro> updateGuerreiro(@PathVariable("id") long id, @RequestBody Guerreiro guerreiro) {
 		Optional<Guerreiro> objGuerreiro = guerreiroRepository.findById(id);
 		if (objGuerreiro.isPresent()) {
 			Guerreiro _guerreiro = objGuerreiro.get();
@@ -82,7 +82,7 @@ public class GuerreiroController {
 	}
 
 	@DeleteMapping("/guerreiros/{id}")
-	public ResponseEntity<HttpStatus> removerGuerreiro(@PathVariable("id") long id) {
+	public ResponseEntity<HttpStatus> deleteGuerreiro(@PathVariable("id") long id) {
 		try {
 			guerreiroRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -92,7 +92,7 @@ public class GuerreiroController {
 	}
 
 	@DeleteMapping("/guerreiros")
-	public ResponseEntity<HttpStatus> limparGuerreiros() {
+	public ResponseEntity<HttpStatus> deleteAllGuerreiros() {
 		try {
 			guerreiroRepository.deleteAll();
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
