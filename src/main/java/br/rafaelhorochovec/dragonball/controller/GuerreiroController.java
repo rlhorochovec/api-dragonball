@@ -3,6 +3,7 @@ package br.rafaelhorochovec.dragonball.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,7 +59,7 @@ public class GuerreiroController {
 	}
 
 	@GetMapping("/guerreiros/{id}")
-	public ResponseEntity<Guerreiro> getGuerreiroById(@PathVariable("id") long id) {
+	public ResponseEntity<Guerreiro> getGuerreiroById(@PathVariable("id") UUID id) {
 		Optional<Guerreiro> guerreiro = guerreiroRepository.findById(id);
 		if (guerreiro.isPresent()) {
 			return new ResponseEntity<>(guerreiro.get(), HttpStatus.OK);
@@ -68,7 +69,7 @@ public class GuerreiroController {
 	}
 
 	@PutMapping("/guerreiros/{id}")
-	public ResponseEntity<Guerreiro> updateGuerreiro(@PathVariable("id") long id, @RequestBody Guerreiro guerreiro) {
+	public ResponseEntity<Guerreiro> updateGuerreiro(@PathVariable("id") UUID id, @RequestBody Guerreiro guerreiro) {
 		Optional<Guerreiro> objGuerreiro = guerreiroRepository.findById(id);
 		if (objGuerreiro.isPresent()) {
 			Guerreiro _guerreiro = objGuerreiro.get();
@@ -82,7 +83,7 @@ public class GuerreiroController {
 	}
 
 	@DeleteMapping("/guerreiros/{id}")
-	public ResponseEntity<HttpStatus> deleteGuerreiro(@PathVariable("id") long id) {
+	public ResponseEntity<HttpStatus> deleteGuerreiro(@PathVariable("id") UUID id) {
 		try {
 			guerreiroRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
