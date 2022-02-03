@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 @Entity
-public class Guerreiro extends Auditoria {
+public class Personagem extends Auditoria {
 
 	/**
 	 * 
@@ -29,11 +29,11 @@ public class Guerreiro extends Auditoria {
 	private String raca;
 	private String planeta;
 	
-	public Guerreiro() {
+	public Personagem() {
 		
 	}
 
-	public Guerreiro(String nome, String raca, String planeta) {
+	public Personagem(String nome, String raca, String planeta) {
 		this.nome = nome;
 		this.raca = raca;
 		this.planeta = planeta;
