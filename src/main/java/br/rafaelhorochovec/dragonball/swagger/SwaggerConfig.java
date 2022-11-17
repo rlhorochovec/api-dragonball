@@ -1,4 +1,4 @@
-package br.rafaelhorochovec.dragonball;
+package br.rafaelhorochovec.dragonball.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
