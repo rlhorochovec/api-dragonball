@@ -18,7 +18,7 @@ import org.hibernate.annotations.Type;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MainCharacter extends Audit {
+public class Character extends Audit {
 
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +31,7 @@ public class MainCharacter extends Audit {
 	private String name;
 	private String planet;
 
-	public MainCharacter(String name, String planet) {
+	public Character(String name, String planet) {
 		this.name = name;
 		this.planet = planet;
 	}
